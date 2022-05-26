@@ -1,0 +1,37 @@
+version: '3'
+services:
+  php:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    container_name: aplicacion
+    restart: unless-stopped
+    ports:
+      - "8080:80"
+    environment:
+      - NOMBRE=JacintoElCinto
+    volumes:
+      - ./:/var/www/html
+  mysql:
+    image: mysql:5.7
+    container_name: mysql 
+    restart: unless-stopped
+    ports:
+      - "3306:3306"
+    environment: 
+      - MYSQL_ROOT_PASSWORD=1234
+      - MYSQL_DATABASE=prueba 
+    volumes:
+      - ./mysql:/var/lib/mysql 
+
+
+
+
+
+
+
+
+
+
+
+
